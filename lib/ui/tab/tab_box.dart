@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_musobaqa/ui/tab/products/products.dart';
 import 'package:flutter_musobaqa/ui/tab/profile/profile_screen.dart';
 
-import 'categories/categories_screen.dart';
+import 'package:flutter_musobaqa/ui/tab/categories/categories_screen.dart';
 
 class TabBox extends StatefulWidget {
   const TabBox({super.key});
@@ -34,9 +34,13 @@ class _TabBoxState extends State<TabBox> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.shop_two), label: "Products"),
+            icon: Icon(Icons.shop_two),
+            label: "Products",
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.category), label: "Catgeories"),
+            icon: Icon(Icons.category),
+            label: "Catgeories",
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
         currentIndex: currentIndex,

@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../data/firebase/auth_service.dart';
-import '../data/models/universal_data.dart';
-import '../utils/ui_utils/error_massage.dart';
-import '../utils/ui_utils/loading_dialog.dart';
+import 'package:flutter_musobaqa/data/firebase/auth_service.dart';
+import 'package:flutter_musobaqa/data/models/universal_data.dart';
+import 'package:flutter_musobaqa/utils/ui_utils/error_massage.dart';
+import 'package:flutter_musobaqa/utils/ui_utils/loading_dialog.dart';
 
 class AuthProvider with ChangeNotifier {
   AuthProvider({required this.firebaseServices});
@@ -31,7 +31,7 @@ class AuthProvider with ChangeNotifier {
     String password = passwordController.text;
     showLoading(context: context);
     UniversalData universalData =
-    await firebaseServices.signUpUser(email: email, password: password);
+        await firebaseServices.signUpUser(email: email, password: password);
     if (context.mounted) {
       hideLoading(dialogContext: context);
     }
@@ -54,7 +54,7 @@ class AuthProvider with ChangeNotifier {
     String password = passwordController.text;
     showLoading(context: context);
     UniversalData universalData =
-    await firebaseServices.loginUser(email: email, password: password);
+        await firebaseServices.loginUser(email: email, password: password);
     if (context.mounted) {
       hideLoading(dialogContext: context);
     }
@@ -101,7 +101,9 @@ class AuthProvider with ChangeNotifier {
     if (universalData.error.isEmpty) {
       if (context.mounted) {
         showConfirmMessage(
-            message: "User Signed Up with Google.", context: context);
+          message: "User Signed Up with Google.",
+          context: context,
+        );
       }
     } else {
       if (context.mounted) {

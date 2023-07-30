@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../colors/app_colors.dart';
+import 'package:flutter_musobaqa/utils/colors/app_colors.dart';
 
 class CustomCircularProgressIndicator extends StatelessWidget {
   final double? strokeWidth;

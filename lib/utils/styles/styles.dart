@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../colors/app_colors.dart';
+import 'package:flutter_musobaqa/utils/colors/app_colors.dart';
 
 class AppStyle {
   static TextStyle display4 = GoogleFonts.poppins(

@@ -1,8 +1,7 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../models/universal_data.dart';
+import 'package:flutter_musobaqa/data/models/universal_data.dart';
 
 class AuthService {
   Future<UniversalData> signUpUser({
@@ -11,7 +10,7 @@ class AuthService {
   }) async {
     try {
       UserCredential userCredential =
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -29,7 +28,7 @@ class AuthService {
   }) async {
     try {
       UserCredential userCredential =
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -58,7 +57,7 @@ class AuthService {
 
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
-    await googleUser?.authentication;
+        await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -66,7 +65,8 @@ class AuthService {
       idToken: googleAuth?.idToken,
     );
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
       return UniversalData(data: userCredential);
     } on FirebaseAuthException catch (e) {
       return UniversalData(error: e.code);
