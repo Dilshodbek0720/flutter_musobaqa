@@ -84,7 +84,7 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
                 GlobalTextField(
                   hintText: "Category Name",
                   keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.next,
+                  textInputAction: TextInputAction.done,
                   textAlign: TextAlign.start,
                   controller: context.read<CategoryProvider>().categoryName,
                   icon: Icon(Icons.drive_file_rename_outline),

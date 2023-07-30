@@ -40,7 +40,7 @@ class _UpdateCategoryScreenState extends State<UpdateCategoryScreen> {
                       icon: Icon(Icons.drive_file_rename_outline),
                         hintText: widget.categoryModel.categoryName,
                         keyboardType: TextInputType.text,
-                        textInputAction: TextInputAction.next,
+                        textInputAction: TextInputAction.done,
                         textAlign: TextAlign.start,
                         controller: context.read<CategoryProvider>().categoryName),
                     SizedBox(height: 60.h,),

@@ -27,54 +27,146 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(28.0),
-        child: Column(
-          children: [
-            Expanded(
-                child: ListView(
-                  children: [
-                    Text("Product Name",style: TextStyle(fontSize: 24.sp,fontWeight: FontWeight.w700,color: Colors.white),),
-                    SizedBox(height: 30.h,),
-                    GlobalTextField(
-                        icon: Icon(Icons.drive_file_rename_outline),
-                        hintText: widget.productModel.productName,
-                        keyboardType: TextInputType.text,
-                        textInputAction: TextInputAction.next,
-                        textAlign: TextAlign.start,
-                        controller: context.read<ProductProvider>().productName),
-                    SizedBox(height: 60.h,),
-                    Text("Description",style: TextStyle(fontSize: 24.sp,fontWeight: FontWeight.w700,color: Colors.white),),
-                    SizedBox(height: 30.h,),
-                    GlobalTextField(
-                        icon: Icon(Icons.description),
-                        hintText: widget.productModel.description,
-                        keyboardType: TextInputType.text,
-                        textInputAction: TextInputAction.done,
-                        textAlign: TextAlign.start,
-                        controller: context.read<ProductProvider>().description),
-                    SizedBox(height: 60.h,),
-                    GlobalButton(title: "Save", onTap: (){
-                      context.read<ProductProvider>().updateProduct(
-                        context: context,
-                        productModel: ProductModel(
-                          productId: widget.productModel.productId,
-                          productName: context.read<ProductProvider>().productName.text,
-                          description: context.read<ProductProvider>().description.text,
-                          productImages: ["imageUrl"],
-                          createdAt: DateTime.now().toString(),
-                          count: 0,
-                          price: 0,
-                          categoryId: '',
-                          currency: "euro"
-                        ),
-                      );
-                      Navigator.pop(context);
-                    })
-                  ],
-                ))
-          ],
-        ),
+      body: ListView(
+        children: [
+          SizedBox(height: 28.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 28.w),
+            child: Text(
+              "Product Name",
+              style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black),
+            ),
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
+          GlobalTextField(
+            hintText: "Product Name",
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.next,
+            textAlign: TextAlign.start,
+            controller: context.read<ProductProvider>().productName,
+            icon: Icon(Icons.drive_file_rename_outline),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 28.w),
+            child: Text(
+              "Description",
+              style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black),
+            ),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          GlobalTextField(
+            hintText: "Description",
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.done,
+            textAlign: TextAlign.start,
+            controller: context.read<ProductProvider>().description,
+            icon: Icon(Icons.description),
+          ),
+          SizedBox(
+            height: 30.h,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 28.w),
+            child: Text(
+              "Price",
+              style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black),
+            ),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          GlobalTextField(
+            hintText: "Price",
+            keyboardType: TextInputType.number,
+            textInputAction: TextInputAction.done,
+            textAlign: TextAlign.start,
+            controller: context.read<ProductProvider>().price,
+            icon: Icon(Icons.price_check),
+          ),
+          SizedBox(
+            height: 30.h,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 28.w),
+            child: Text(
+              "Count",
+              style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black),
+            ),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          GlobalTextField(
+            hintText: "Count",
+            keyboardType: TextInputType.number,
+            textInputAction: TextInputAction.done,
+            textAlign: TextAlign.start,
+            controller: context.read<ProductProvider>().count,
+            icon: Icon(Icons.price_check),
+          ),
+          SizedBox(
+            height: 30.h,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 28.w),
+            child: Text(
+              "Currency",
+              style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black),
+            ),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          GlobalTextField(
+            hintText: "Currency",
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.done,
+            textAlign: TextAlign.start,
+            controller: context.read<ProductProvider>().currency,
+            icon: Icon(Icons.currency_exchange),
+          ),
+          SizedBox(height: 30.h,),
+          GlobalButton(title: "Save", onTap: (){
+            context.read<ProductProvider>().updateProduct(
+              context: context,
+              productModel: ProductModel(
+                productId: widget.productModel.productId,
+                productName: context.read<ProductProvider>().productName.text.isNotEmpty ?context.read<ProductProvider>().productName.text :widget.productModel.productName,
+                description: context.read<ProductProvider>().description.text.isNotEmpty? context.read<ProductProvider>().description.text :widget.productModel.description,
+                productImages: [widget.productModel.productImages[0]],
+                createdAt: DateTime.now().toString(),
+                count: context.read<ProductProvider>().count.text.isNotEmpty? int.parse(context.read<ProductProvider>().count.text) : widget.productModel.count,
+                price: context.read<ProductProvider>().price.text.isNotEmpty? int.parse(context.read<ProductProvider>().price.text) : widget.productModel.price,
+                categoryId: widget.productModel.categoryId,
+                currency: context.read<ProductProvider>().currency.text.isNotEmpty?  context.read<ProductProvider>().currency.text : widget.productModel.currency
+              ),
+            );
+            Navigator.pop(context);
+          }),
+          SizedBox(height: 30.h,)
+        ],
       ),
     );
   }

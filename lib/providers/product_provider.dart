@@ -16,6 +16,9 @@ class ProductProvider with ChangeNotifier {
 
   final TextEditingController productName = TextEditingController();
   final TextEditingController description = TextEditingController();
+  final TextEditingController count = TextEditingController();
+  final TextEditingController price = TextEditingController();
+  final TextEditingController currency = TextEditingController();
 
 
   Future<void> addProduct({
@@ -40,6 +43,9 @@ class ProductProvider with ChangeNotifier {
     }
     productName.clear();
     description.clear();
+    count.clear();
+    price.clear();
+    currency.clear();
   }
 
   Future<void> updateProduct({
@@ -64,6 +70,9 @@ class ProductProvider with ChangeNotifier {
 
     productName.clear();
     description.clear();
+    count.clear();
+    price.clear();
+    currency.clear();
 
   }
 
