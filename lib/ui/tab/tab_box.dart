@@ -3,6 +3,10 @@ import 'package:flutter_musobaqa/providers/tab_provider.dart';
 import 'package:provider/provider.dart';
 
 
+import 'package:flutter_musobaqa/ui/tab/categories/categories_screen.dart';
+=======
+
+
 class TabBox extends StatefulWidget {
   const TabBox({super.key});
 
@@ -20,9 +24,17 @@ class _TabBoxState extends State<TabBox> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.shop_two), label: "Products"),
+            icon: Icon(Icons.shop_two),
+            label: "Products",
+          ),
           BottomNavigationBarItem(
+
+            icon: Icon(Icons.category),
+            label: "Catgeories",
+          ),
+
               icon: Icon(Icons.category), label: "Categories"),
+
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
         onTap: (onTab) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_musobaqa/utils/images/app_images.dart';
 
-import '../../app/app.dart';
-import '../../utils/colors/app_colors.dart';
+import 'package:flutter_musobaqa/app/app.dart';
+import 'package:flutter_musobaqa/utils/colors/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return App();
+            return RouterApp();
           },
         ),
       );
@@ -38,10 +38,13 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height*0.45,
-          width: MediaQuery.of(context).size.width*0.8,
-          child: Image.asset(AppImages.pomidor, fit: BoxFit.cover,),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.45,
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: Image.asset(
+            AppImages.pomidor,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

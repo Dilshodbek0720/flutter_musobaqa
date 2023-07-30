@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'custom_circular.dart';
+import 'package:flutter_musobaqa/utils/ui_utils/custom_circular.dart';
 
 void showLoading({required BuildContext context}) {
   showDialog(
@@ -17,7 +17,9 @@ void showLoading({required BuildContext context}) {
             child: SizedBox(
               height: 70.0,
               width: 70.0,
-              child: CustomCircularProgressIndicator(strokeWidth: 6,),
+              child: CustomCircularProgressIndicator(
+                strokeWidth: 6,
+              ),
             ),
           ),
         ),

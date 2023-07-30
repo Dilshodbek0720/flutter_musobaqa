@@ -1,8 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../colors/app_colors.dart';
+import 'package:flutter_musobaqa/utils/colors/app_colors.dart';
 
 void showErrorMessage({
   required String message,
@@ -21,8 +19,7 @@ void showErrorMessage({
         padding: const EdgeInsets.only(top: 10),
         child: Text(
           message,
-          style:
-          TextStyle(fontWeight: FontWeight.w500, color: AppColors.white),
+          style: TextStyle(fontWeight: FontWeight.w500, color: AppColors.white),
         ),
       ),
       actions: [
@@ -50,8 +47,7 @@ Future<void> showConfirmMessage({
         padding: const EdgeInsets.only(top: 10),
         child: Text(
           message,
-          style:
-          TextStyle(fontWeight: FontWeight.w500, color: AppColors.white),
+          style: TextStyle(fontWeight: FontWeight.w500, color: AppColors.white),
         ),
       ),
       actions: [
