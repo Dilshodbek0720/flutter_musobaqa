@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_musobaqa/data/firebase/category_service.dart';
+import 'package:flutter_musobaqa/data/firebase/product_service.dart';
 import 'package:flutter_musobaqa/providers/auth_provider.dart';
 import 'package:flutter_musobaqa/providers/category_provider.dart';
+import 'package:flutter_musobaqa/providers/product_provider.dart';
 import 'package:flutter_musobaqa/providers/tab_admin_provider.dart';
 import 'package:flutter_musobaqa/providers/tab_user_provider.dart';
 import 'package:flutter_musobaqa/ui/splash/splash_screen.dart';
@@ -33,6 +35,9 @@ Future<void> main() async {
           create: (context) => CategoryProvider(categoryService: CategoryService()),
           lazy: true,
         ),
+        ChangeNotifierProvider(
+            create: (context) => ProductProvider(productService: ProductService())
+        )
         // ChangeNotifierProvider(
         //   create: (context) =>
         //       ProfileProvider(profileService: ProfileService()),

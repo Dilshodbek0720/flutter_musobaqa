@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_musobaqa/ui/tab_admin/tab_admin_box.dart';
 import 'package:flutter_musobaqa/ui/tab_user/tab_user_box.dart';
 import 'package:provider/provider.dart';
-
-import '../providers/auth_provider.dart';
-import '../ui/auth/auth_screen.dart';
+import 'package:flutter_musobaqa/providers/auth_provider.dart';
+import 'package:flutter_musobaqa/ui/auth/auth_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

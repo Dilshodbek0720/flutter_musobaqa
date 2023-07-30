@@ -15,8 +15,8 @@ class TabAdminProvider with ChangeNotifier {
   Widget? widget;
 
   void getWidgets(){
+    screens.add(const ProductAdminScreen());
     screens.add(const CategoryAdminScreen());
-    screens.add(const ProductsAdminScreen());
     screens.add(const ProfileAdminScreen());
     widget = screens[0];
     notifyListeners();

@@ -44,6 +44,7 @@ class _CategoryAdminScreenState extends State<CategoryAdminScreen> {
                       onLongPress: () {
 
                       },
+                      leading: Image.network(categoryModel.imageUrl),
                       title: Text(categoryModel.categoryName),
                       subtitle: Text(categoryModel.description),
                       trailing: SizedBox(
