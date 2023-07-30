@@ -1,23 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_musobaqa/data/firebase/category_service.dart';
 import 'package:flutter_musobaqa/providers/auth_provider.dart';
-
-import 'package:flutter_musobaqa/ui/router.dart';
-
-import 'package:flutter_musobaqa/providers/tab_provider.dart';
-
+import 'package:flutter_musobaqa/providers/category_provider.dart';
+import 'package:flutter_musobaqa/providers/tab_admin_provider.dart';
+import 'package:flutter_musobaqa/providers/tab_user_provider.dart';
 import 'package:flutter_musobaqa/ui/splash/splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import 'package:flutter_musobaqa/data/firebase/auth_service.dart';
+import 'data/firebase/auth_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  FirebaseDatabase.instance.setPersistenceEnabled(true);
-  FirebaseDatabase.instance.reference().keepSynced(true);
   runApp(
     MultiProvider(
       providers: [
@@ -26,7 +22,15 @@ Future<void> main() async {
           lazy: true,
         ),
         ChangeNotifierProvider(
-          create: (context) => TabProvider(),
+          create: (context) => TabAdminProvider(),
+          lazy: true,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TabUserProvider(),
+          lazy: true,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CategoryProvider(categoryService: CategoryService()),
           lazy: true,
         ),
         // ChangeNotifierProvider(
@@ -61,7 +65,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData.light(),
         );
       },
-      child: RouterApp(),
+      child: SplashScreen(),
     );
   }
 }

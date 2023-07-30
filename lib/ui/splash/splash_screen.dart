@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_musobaqa/utils/images/app_images.dart';
 
 import 'package:flutter_musobaqa/app/app.dart';
-import 'package:flutter_musobaqa/utils/colors/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         MaterialPageRoute(
           builder: (context) {
-            return RouterApp();
+            return App();
           },
         ),
       );

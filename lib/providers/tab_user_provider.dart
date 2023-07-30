@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_musobaqa/ui/tab/categories/categories_screen.dart';
-import 'package:flutter_musobaqa/ui/tab/products/products.dart';
-import 'package:flutter_musobaqa/ui/tab/profile/profile_screen.dart';
+import 'package:flutter_musobaqa/ui/tab_user/products/products.dart';
+import 'package:flutter_musobaqa/ui/tab_user/profile/profile_screen.dart';
 
-class TabProvider with ChangeNotifier {
+import '../ui/tab_user/categories/categories_screen.dart';
 
-  TabProvider()  {
+class TabUserProvider with ChangeNotifier {
+
+  TabUserProvider()  {
     getWidgets();
   }
 
