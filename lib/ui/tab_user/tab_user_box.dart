@@ -21,9 +21,10 @@ class _TabUserBoxState extends State<TabUserBox> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.shop_two), label: "Products"),
-          BottomNavigationBarItem(
               icon: Icon(Icons.category), label: "Categories"),
+          BottomNavigationBarItem(
+
+              icon: Icon(Icons.shop_two), label: "Products"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
         onTap: (onTab) {

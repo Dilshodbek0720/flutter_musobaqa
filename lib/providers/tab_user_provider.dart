@@ -17,7 +17,7 @@ class TabUserProvider with ChangeNotifier {
   void getWidgets(){
     screens.add(const CategoriesScreen());
     screens.add(const ProductsScreen());
-    screens.add(const ProfileScreen());
+    screens.add(const ProfileUserScreen());
     widget = screens[0];
     notifyListeners();
   }
