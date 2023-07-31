@@ -5,6 +5,7 @@ import 'package:flutter_musobaqa/data/firebase/product_service.dart';
 import 'package:flutter_musobaqa/providers/auth_provider.dart';
 import 'package:flutter_musobaqa/providers/category_provider.dart';
 import 'package:flutter_musobaqa/providers/product_provider.dart';
+import 'package:flutter_musobaqa/providers/profile_provider.dart';
 import 'package:flutter_musobaqa/providers/tab_admin_provider.dart';
 import 'package:flutter_musobaqa/providers/tab_user_provider.dart';
 import 'package:flutter_musobaqa/ui/splash/splash_screen.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import 'data/firebase/auth_service.dart';
+import 'data/firebase/profile_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,12 +39,12 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider(
             create: (context) => ProductProvider(productService: ProductService())
-        )
-        // ChangeNotifierProvider(
-        //   create: (context) =>
-        //       ProfileProvider(profileService: ProfileService()),
-        //   lazy: true,
-        // ),
+        ),
+        ChangeNotifierProvider(
+          create: (context) =>
+              ProfileProvider(profileService: ProfileService()),
+          lazy: true,
+        ),
         // ChangeNotifierProvider(
         //   create: (context) =>
         //       CategoryProvider(categoryService: CategoryService()),
