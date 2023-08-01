@@ -1,12 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_musobaqa/providers/auth_provider.dart';
+import 'package:flutter_musobaqa/provider/auth_provider.dart';
+import 'package:flutter_musobaqa/provider/profiles_provider.dart';
+import 'package:flutter_musobaqa/ui/auth/widgets/global_button.dart';
+import 'package:flutter_musobaqa/utils/colors/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../providers/profile_provider.dart';
-import '../../../utils/colors/app_colors.dart';
-import '../../auth/widgets/global_button.dart';
-import '../../auth/widgets/global_text_fields.dart';
+
+import 'package:flutter_musobaqa/ui/auth/widgets/global_text_fields.dart';
+
 
 class ProfileUserScreen extends StatefulWidget {
   const ProfileUserScreen({Key? key}) : super(key: key);
@@ -23,14 +25,17 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
     User? user = context.watch<ProfileProvider>().currentUser;
 
     return Scaffold(
+      // backgroundColor: Colors.black,
       appBar: AppBar(
+
+        backgroundColor: Colors.black,
         title: const Text("Profile Screen"),
         actions: [
           IconButton(
               onPressed: () {
                 context.read<AuthProvider>().logOutUser(context);
               },
-              icon: const Icon(Icons.logout))
+              icon: const Icon(Icons.logout),)
         ],
       ),
       body:  Padding(
@@ -45,7 +50,7 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
                   style: TextStyle(
                       fontSize: 32.spMin,
                       fontWeight: FontWeight.w700,
-                      color: AppColors.black),
+                      color: AppColors.black,),
                 ),
                 IconButton(
                     onPressed: () {
@@ -57,7 +62,7 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
                       Icons.edit,
                       size: 32.spMin,
                       color: Colors.black,
-                    ))
+                    ),)
               ],
             ),
             SizedBox(
@@ -81,14 +86,14 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
                   style: TextStyle(
                       fontSize: 20.spMin,
                       color: Colors.black,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w500,),
                 ),
                 Center(
                   child: Text(
                     user?.displayName ?? "",
                     style: const TextStyle(
                       fontSize: 24,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -105,7 +110,7 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
                   style: TextStyle(
                       fontSize: 20.spMin,
                       color: Colors.black,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w500,),
                 ),
                 Expanded(
                   child: Center(
@@ -131,14 +136,14 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
                   style: TextStyle(
                       fontSize: 20.spMin,
                       color: Colors.black,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w500,),
                 ),
                 Center(
                   child: Text(
                     user?.phoneNumber ?? "Empty",
                     style: const TextStyle(
                       fontSize: 18,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -152,13 +157,13 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
               child: Column(
                 children: [
                   GlobalTextField(
+                    icon: const Icon(Icons.drive_file_rename_outline),
                     hintText: "Display Name",
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.next,
                     textAlign: TextAlign.start,
                     controller:
                     context.read<ProfileProvider>().nameController,
-                    icon: Icon(Icons.drive_file_rename_outline_sharp),
                   ),
                   SizedBox(
                     height: 10.h,
@@ -169,20 +174,19 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
                     textInputAction: TextInputAction.next,
                     textAlign: TextAlign.start,
                     controller:
-                    context.read<ProfileProvider>().emailController,
-                    icon: Icon(Icons.email),
+                    context.read<ProfileProvider>().emailController, icon: const Icon(Icons.email),
                   ),
                   SizedBox(
                     height: 10.h,
                   ),
                   GlobalTextField(
+                    icon: const Icon(Icons.phone),
                     hintText: "Phone Update",
                     keyboardType: TextInputType.phone,
                     textInputAction: TextInputAction.next,
                     textAlign: TextAlign.start,
                     controller:
                     context.read<ProfileProvider>().phoneController,
-                    icon: Icon(Icons.phone),
                   ),
                   SizedBox(
                     height: 10.h,
@@ -199,7 +203,7 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
                         setState(() {
                           isEdit = false;
                         });
-                      })
+                      },)
                 ],
               ),
             )

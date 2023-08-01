@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_musobaqa/providers/auth_provider.dart';
+import 'package:flutter_musobaqa/provider/auth_provider.dart';
 import 'package:flutter_musobaqa/ui/auth/widgets/global_button.dart';
 import 'package:flutter_musobaqa/ui/auth/widgets/global_text_fields.dart';
 import 'package:flutter_musobaqa/ui/auth/widgets/icon_button.dart';
-
 import 'package:flutter_musobaqa/utils/colors/app_colors.dart';
 import 'package:flutter_musobaqa/utils/icons/app_icons.dart';
 import 'package:flutter_musobaqa/utils/styles/styles.dart';
@@ -19,7 +18,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: SingleChildScrollView(
           child: Column(
@@ -37,7 +36,7 @@ class LoginPage extends StatelessWidget {
                 height: 30.h,
               ),
               GlobalTextField(
-                icon: Icon(Icons.email),
+                icon: const Icon(Icons.email),
                 hintText: "Email",
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.done,
@@ -45,7 +44,7 @@ class LoginPage extends StatelessWidget {
                 controller: context.read<AuthProvider>().emailController,
               ),
               GlobalTextField(
-                icon: Icon(Icons.lock),
+                icon: const Icon(Icons.lock),
                 hintText: "Password",
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.done,
@@ -55,7 +54,7 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 20.h,),
               GlobalButton(title: "Sign in", onTap: (){
                 context.read<AuthProvider>().logInUser(context);
-              }),
+              },),
               SizedBox(height: 40.h,),
               Container(
                 width: double.infinity,
@@ -88,7 +87,7 @@ class LoginPage extends StatelessWidget {
                       onChanged.call();
                       context.read<AuthProvider>().signUpButtonPressed();
                     },
-                    child: Text("Sign up"),
+                    child: const Text("Sign up"),
                   )
                 ],
               ),

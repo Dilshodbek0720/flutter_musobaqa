@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_musobaqa/providers/auth_provider.dart';
+import 'package:flutter_musobaqa/provider/auth_provider.dart';
 import 'package:flutter_musobaqa/ui/auth/widgets/global_button.dart';
 import 'package:flutter_musobaqa/ui/auth/widgets/global_text_fields.dart';
 import 'package:flutter_musobaqa/ui/auth/widgets/icon_button.dart';
@@ -18,7 +18,7 @@ class SignPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: SingleChildScrollView(
           child: Column(
@@ -36,7 +36,7 @@ class SignPage extends StatelessWidget {
                 height: 30.h,
               ),
               GlobalTextField(
-                icon: Icon(Icons.email),
+                icon: const Icon(Icons.email),
                 hintText: "Email",
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.done,
@@ -44,7 +44,7 @@ class SignPage extends StatelessWidget {
                 controller: context.read<AuthProvider>().emailController,
               ),
               GlobalTextField(
-                icon: Icon(Icons.lock),
+                icon: const Icon(Icons.lock),
                 hintText: "Password",
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.done,
@@ -54,7 +54,7 @@ class SignPage extends StatelessWidget {
               SizedBox(height: 20.h,),
               GlobalButton(title: "Sign up", onTap: (){
                 context.read<AuthProvider>().signUpUser(context);
-              }),
+              },),
               SizedBox(height: 40.h,),
               Container(
                 width: double.infinity,
@@ -87,7 +87,7 @@ class SignPage extends StatelessWidget {
                       onChanged.call();
                       context.read<AuthProvider>().loginButtonPressed();
                     },
-                    child: Text("Sign in"),
+                    child: const Text("Sign in"),
                   )
                 ],
               )

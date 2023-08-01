@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_musobaqa/ui/tab_admin/tab_admin_box.dart';
-import 'package:flutter_musobaqa/ui/tab_user/tab_user_box.dart';
+import 'package:flutter_musobaqa/provider/auth_provider.dart';
+import 'package:flutter_musobaqa/ui/tab_admin/tab_box_admin.dart';
+import 'package:flutter_musobaqa/ui/tab_user/tab_box_user.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_musobaqa/providers/auth_provider.dart';
 import 'package:flutter_musobaqa/ui/auth/auth_screen.dart';
 
 class App extends StatelessWidget {
@@ -22,12 +22,12 @@ class App extends StatelessWidget {
             return Center(child: Text(snapshot.error.toString()));
           }
           else if (snapshot.data == null) {
-            return AuthScreen();
+            return const AuthScreen();
           } else {
             if(snapshot.data!.email=="farruxbek@gmail.com"){
-              return TabAdminBox();
+              return const TabBoxAdminScreen();
             }
-            return TabUserBox();
+            return const TabBoxUserScreen();
           }
         },
       ),

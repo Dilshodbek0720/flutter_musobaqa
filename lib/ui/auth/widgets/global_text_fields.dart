@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../utils/colors/app_colors.dart';
 
@@ -10,7 +11,7 @@ class GlobalTextField extends StatelessWidget {
     required this.textInputAction,
     required this.textAlign,
     this.obscureText = false,
-    required this.controller, required this.icon,
+    required this.controller, required this.icon,this.isDescription = false, this.digit = false,
   }) : super(key: key);
 
   final String hintText;
@@ -18,6 +19,8 @@ class GlobalTextField extends StatelessWidget {
   TextInputAction textInputAction;
   TextAlign textAlign;
   final bool obscureText;
+  final bool isDescription;
+  final bool digit;
   final Icon icon;
   final TextEditingController controller;
 
@@ -26,6 +29,11 @@ class GlobalTextField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 15.h),
       child: TextField(
+        inputFormatters: digit ? [
+          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+          LengthLimitingTextInputFormatter(10),
+        ]:[],
+        maxLines: isDescription? 5: 1,
         style: TextStyle(
             fontSize: 20.sp,
             fontWeight: FontWeight.w600,
